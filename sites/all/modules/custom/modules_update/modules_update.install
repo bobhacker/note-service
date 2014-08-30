@@ -17,3 +17,10 @@ function modules_update_update_7000(&$sandbox) {
 function modules_update_update_7001(&$sandbox) {
   module_enable(array('feature_i18n'), TRUE);
 }
+
+/**
+ * Mise à jour de la feature Feature i18n
+ */
+function modules_update_update_7002(&$sandbox) {
+  module_enable(array('title', 'entity_translation', 'i18n_node', 'i18n_taxonomy', 'i18n_field', 'i18n_menu'), TRUE);
+}
