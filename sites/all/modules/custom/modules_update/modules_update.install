@@ -10,3 +10,10 @@
 function modules_update_update_7000(&$sandbox) {
   module_enable(array('admin_menu_toolbar', 'module_filter', 'noteresource'), TRUE);
 }
+
+/**
+ * Création de la feature Feature i18n
+ */
+function modules_update_update_7001(&$sandbox) {
+  module_enable(array('feature_i18n'), TRUE);
+}
