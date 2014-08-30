@@ -1,0 +1,4 @@
+name = Modules Update
+description = Administration of custom modules update
+core = 7.x
+version = 7.x-1.0

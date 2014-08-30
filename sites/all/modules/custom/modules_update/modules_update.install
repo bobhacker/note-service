@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * modules_update.install
+ */
+
+/**
+ * Première activation
+ */
+function modules_update_update_7000(&$sandbox) {
+  module_enable(array('admin_menu_toolbar', 'module_filter', 'noteresource'), TRUE);
+}
