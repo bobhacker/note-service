@@ -12,21 +12,22 @@
  */
 function _noteresource_create($data) {
   global $user;
-  
-  unset($data['id']);
-  $data['uid'] = $user->uid;
-  $data['created'] = REQUEST_TIME;
-  $data['modified'] = REQUEST_TIME;
-  if (!isset($data['subject'])) {
-    return _process_services_error(t('Missing note attribute subject'), 406);
+
+  $data = (object) $data;
+  unset($data->id);
+  $data->uid = $user->uid;
+  $data->created = REQUEST_TIME;
+  $data->modified = REQUEST_TIME;
+  if (!isset($data->subject)) {
+    return _process_services_error('Missing note attribute subject', 406);
   }
-  if (!isset($data['note'])) {
-    return _process_services_error(t('Missing note attribute note'), 406);
+  if (!isset($data->note)) {
+    return _process_services_error('Missing note attribute note', 406);
   }
   noteresource_write_note($data);
   return (object) array(
-    'id' => $data['id'],
-    'uri' => services_resource_uri(array('note', $data['id'])),
+    'id' => $data->id,
+    'uri' => services_resource_uri(array('note', $data->id)),
   );
 }
 
@@ -38,13 +39,12 @@ function _noteresource_create($data) {
  * @return object
  */
 function _noteresource_update($id, $data) {
-  global $user;
-  
+  $data = (object) $data;
   $note = noteresource_get_note($id);
-  unset($data['created']);
-  $data['id'] = $id;
-  $data['uid'] = $note->uid;
-  $data['modified'] = REQUEST_TIME;
+  unset($data->created);
+  $data->id = $id;
+  $data->uid = $note->uid;
+  $data->modified = REQUEST_TIME;
   noteresource_write_note($data);
   return (object) array(
     'id' => $id,
